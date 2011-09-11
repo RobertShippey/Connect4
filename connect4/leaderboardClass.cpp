@@ -51,7 +51,6 @@ void leaderboard::writeFile(GWindow &Gwin)
 {
     std::ofstream writeBoard;
 	writeBoard.open("scores.txt");	
-	//put the scoreboard out to the file
 	for(int j=0;j<10;j++)
 	{ 
 		writeBoard << leader[j].name << " " << leader[j].moves << "\n";

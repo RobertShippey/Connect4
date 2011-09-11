@@ -38,7 +38,6 @@ void connect4::setup(GWindow &Gwin)
 	player[1].writeName(Gwin);
 
 	//Draws the boxes for each 'coin' to sit inside.
-	//A loop in a loop to allow me to easily draw different rows.
 	Gwin.setPenColour(BLACK);
 
 	int xleft=(Gwin.getWidth()-(gridSize*size)-20);
@@ -83,8 +82,7 @@ void connect4::setup(GWindow &Gwin)
 int connect4::makeSelection(GWindow &Gwin)
 {
 	int column=-1;
-	//column = Gwin.readInt();
-	//column--;
+
 	int x;
 	int y;
 	GMouseEvent c;
@@ -95,8 +93,7 @@ int connect4::makeSelection(GWindow &Gwin)
 		y = c.y;
 		if(c.isLeftDown())
 		{
-			if(x>board[0].xLeft && x<board[0].xRight && y>board[0].yTop && y<board[0].yBottom)//store coords in class?
-				//can work them out in the setup drawing the board loop
+			if(x>board[0].xLeft && x<board[0].xRight && y>board[0].yTop && y<board[0].yBottom)
 			{
 				column = 0;
 				break;
@@ -121,9 +118,6 @@ int connect4::makeSelection(GWindow &Gwin)
 				column = 4;
 				break;
 			}
-			
-			//no else because the user NEEDS to pick a column, if they don't click a column
-			//then a)they're a moron, and b)it should loop back round until they do.
 		}
 	}
 

@@ -20,7 +20,7 @@ int main ()
     connect4 game;
     game.setup(Gwin);
     
-	int yText=30; //30
+	int yText=30; 
     
 	//beginning of game loop
 	for(int x=0;x<25;x++)
@@ -34,9 +34,7 @@ int main ()
 		yText+=10;
         
         
-		if(game.won(Gwin)
-			||
-			tehAnswer==42)
+		if(game.won(Gwin) || tehAnswer==42)
 		{
             break;
         }
