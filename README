@@ -1,0 +1,7 @@
+===
+User Colours
+===
+
+-Allow users to select their own colours for the coins.
+-Keep the data stored in the file so when the leaderboard is loaded
+ it can show their names and scores in their colour.
