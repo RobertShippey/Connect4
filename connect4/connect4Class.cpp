@@ -148,8 +148,7 @@ int connect4::makeSelection(GWindow &Gwin)
 
 bool connect4::won(GWindow &Gwin)
 {
-
-	for(int c=0;c<5;c++)
+	for(int c=0;c<5;c++) //vertical
 	{
 		for(int x=0;x<2;x++)
 		{
@@ -161,10 +160,10 @@ bool connect4::won(GWindow &Gwin)
 				winner = player[0];
 				draw = false;
 			}
-			if(board[c].row[x].player.name==player[1].name &&
+			if (board[c].row[x].player.name==player[1].name &&
 				board[c].row[x+1].player.name==player[1].name &&
 				board[c].row[x+2].player.name==player[1].name &&
-				board[x].row[x+3].player.name==player[1].name)
+				board[c].row[x+3].player.name==player[1].name)
 			{
 				winner = player[1];
 				draw = false;
@@ -172,22 +171,22 @@ bool connect4::won(GWindow &Gwin)
 		}
 	}
 
-	for(int x=0;x<2;x++) //checking for holizontal 4's
+	for(int c=0;c<2;c++) //holizontal
 	{
-		for(int i=0;i<5;i++)
+		for(int x=0;x<5;x++)
 		{
-			if(board[x].row[i].player.name==player[0].name &&
-				board[x+1].row[i].player.name==player[0].name &&
-				board[x+2].row[i].player.name==player[0].name &&
-				board[x+3].row[i].player.name==player[0].name)
+			if (board[c].row[x].player.name==player[0].name &&
+				board[c+1].row[x].player.name==player[0].name &&
+				board[c+2].row[x].player.name==player[0].name &&
+				board[c+3].row[x].player.name==player[0].name)
 			{
 				winner = player[0];
 				draw = false;
 			}
-			if(board[x].row[i].player.name==player[1].name &&
-				board[x+1].row[i].player.name==player[1].name &&
-				board[x+2].row[i].player.name==player[1].name &&
-				board[x+3].row[i].player.name==player[1].name)
+			if(board[c].row[x].player.name==player[1].name &&
+				board[c+1].row[x].player.name==player[1].name &&
+				board[c+2].row[x].player.name==player[1].name &&
+				board[c+3].row[x].player.name==player[1].name)
 			{
 				winner = player[1];
 				draw = false;
@@ -196,7 +195,7 @@ bool connect4::won(GWindow &Gwin)
 	}
 
 
-	for(int x=0;x<2;x++)//checking for diagonal downs 4's
+	for(int x=0;x<2;x++)//diagonal downs (\)
 	{ 
 		for(int y=3;y<5;y++)
 		{
@@ -220,7 +219,7 @@ bool connect4::won(GWindow &Gwin)
 	}
 
 
-	for(int x=0;x<2;x++)//checking for diagonal up 4's
+	for(int x=0;x<2;x++)//diagonal up (/)
 	{ 
 		for(int y=0;y<2;y++)
 		{

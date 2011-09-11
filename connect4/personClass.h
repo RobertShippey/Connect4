@@ -7,7 +7,7 @@ class person
 public:
     std::string name;
     GColour myColour;
-	int moves;//unneeded?
+	int moves;
     bool myGo;
     void writeName(GWindow &Gwin);
 	void fixName();
