@@ -33,17 +33,17 @@ void connect4::setup(GWindow &Gwin)
 	Gwin.setPenColour(ORANGE);
 	Gwin.rectangle(30,35,40,45);
 
-	Gwin.setPenColour(YELLOW);
-	Gwin.rectangle(50,35,60,45);
+	//Gwin.setPenColour(YELLOW);
+	//Gwin.rectangle(50,35,60,45);
 
 	Gwin.setPenColour(GREEN);
-	Gwin.rectangle(70,35,80,45);
+	Gwin.rectangle(50,35,60,45);
 
 	Gwin.setPenColour(BLUE);
-	Gwin.rectangle(90,35,100,45);
+	Gwin.rectangle(70,35,80,45);
 
 	Gwin.setPenColour(PURPLE);
-	Gwin.rectangle(110,35,120,45);
+	Gwin.rectangle(90,35,100,45);
 
 	Gwin.refresh();
 
@@ -68,22 +68,22 @@ void connect4::setup(GWindow &Gwin)
 				player[0].myColour = ORANGE;
 				Gwin.outlineCircle(x,y,8);
 			}
+			//else if(x>50 && x<60 && y>35 && y<45)
+			//{
+			//	player[0].myColour = YELLOW;
+			//	Gwin.outlineCircle(x,y,8);
+			//}
 			else if(x>50 && x<60 && y>35 && y<45)
-			{
-				player[0].myColour = YELLOW;
-				Gwin.outlineCircle(x,y,8);
-			}
-			else if(x>70 && x<80 && y>35 && y<45)
 			{
 				player[0].myColour = GREEN;
 				Gwin.outlineCircle(x,y,8);
 			}
-			else if(x>90 && x<100 && y>35 && y<45)
+			else if(x>70 && x<80 && y>35 && y<45)
 			{
 				player[0].myColour = BLUE;
 				Gwin.outlineCircle(x,y,8);
 			}
-			else if(x>110 && x<120 && y>35 && y<45)
+			else if(x>90 && x<100 && y>35 && y<45)
 			{
 				player[0].myColour = PURPLE;
 				Gwin.outlineCircle(x,y,8);
@@ -96,7 +96,7 @@ void connect4::setup(GWindow &Gwin)
 	Gwin.writeText(10,55,"Enter Player 2's name: ");
 	player[1].name = (Gwin.readString(12));
 	player[1].fixName();
-
+	
 	Gwin.writeText(10,65,"Select ");
 	Gwin.writeString(player[1].name);
 	Gwin.writeText("'s coin colour");
@@ -111,25 +111,25 @@ void connect4::setup(GWindow &Gwin)
 		Gwin.setPenColour(ORANGE);
 		Gwin.rectangle(30,80,40,90);
 	}
-	if(player[0].myColour!=YELLOW)
-	{
-		Gwin.setPenColour(YELLOW);
-		Gwin.rectangle(50,80,60,90);
-	}
+	//if(player[0].myColour!=YELLOW)
+	//{
+	//	Gwin.setPenColour(YELLOW);
+	//	Gwin.rectangle(50,80,60,90);
+	//}
 	if(player[0].myColour!=GREEN)
 	{
 		Gwin.setPenColour(GREEN);
-		Gwin.rectangle(70,80,80,90);
+		Gwin.rectangle(50,80,60,90);
 	}
 	if(player[0].myColour!=BLUE)
 	{
 		Gwin.setPenColour(BLUE);
-		Gwin.rectangle(90,80,100,90);
+		Gwin.rectangle(70,80,80,90);
 	}
 	if(player[0].myColour!=PURPLE)
 	{
 		Gwin.setPenColour(PURPLE);
-		Gwin.rectangle(110,80,120,90);
+		Gwin.rectangle(90,80,100,90);
 	}
 
 	Gwin.refresh();
@@ -159,15 +159,15 @@ void connect4::setup(GWindow &Gwin)
 					Gwin.outlineCircle(x,y,8);
 				}
 			}
+			//else if(x>50 && x<60 && y>80 && y<90)
+			//{
+			//	if(player[0].myColour!=YELLOW)
+			//	{
+			//		player[1].myColour = YELLOW;
+			//		Gwin.outlineCircle(x,y,8);
+			//	}
+			//}
 			else if(x>50 && x<60 && y>80 && y<90)
-			{
-				if(player[0].myColour!=YELLOW)
-				{
-					player[1].myColour = YELLOW;
-					Gwin.outlineCircle(x,y,8);
-				}
-			}
-			else if(x>70 && x<80 && y>80 && y<90)
 			{
 				if(player[0].myColour!=GREEN)
 				{
@@ -175,7 +175,7 @@ void connect4::setup(GWindow &Gwin)
 					Gwin.outlineCircle(x,y,8);
 				}
 			}
-			else if(x>90 && x<100 && y>80 && y<90)
+			else if(x>70 && x<80 && y>80 && y<90)
 			{
 				if(player[0].myColour!=BLUE)
 				{
@@ -183,7 +183,7 @@ void connect4::setup(GWindow &Gwin)
 					Gwin.outlineCircle(x,y,8);
 				}
 			}
-			else if(x>110 && x<120 && y>80 && y<90)
+			else if(x>90 && x<100 && y>80 && y<90)
 			{
 				if(player[0].myColour!=PURPLE)
 				{
