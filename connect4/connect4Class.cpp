@@ -96,7 +96,12 @@ void connect4::setup(GWindow &Gwin)
 	Gwin.writeText(10,55,"Enter Player 2's name: ");
 	player[1].name = (Gwin.readString(12));
 	player[1].fixName();
-	
+	{
+		Gwin.writeText(" Name taken, try again: ");
+		player[1].name = Gwin.readString(12);
+		player[1].fixName();
+	}
+
 	Gwin.writeText(10,65,"Select ");
 	Gwin.writeString(player[1].name);
 	Gwin.writeText("'s coin colour");
