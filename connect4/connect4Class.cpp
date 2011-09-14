@@ -2,10 +2,17 @@
 
 void connect4::setup(GWindow &Gwin)
 {
+	//setupPlayers(Gwin);
+	//setupGame(Gwin);
+
+	//players{
 	player[0].myColour = GwinColourNames::RED;
 	player[0].myGo = true;
 	player[1].myColour = GwinColourNames::BLUE; 
 	player[1].myGo = false;
+	//}players
+
+	//game{
 	draw = true;
 	moves = 0;
 
@@ -16,7 +23,9 @@ void connect4::setup(GWindow &Gwin)
 			board[x].row[y].empty=true;
 		}
 	}
+	//}game
 
+	//players{
 	Gwin.setPenColour(player[0].myColour);
 	Gwin.writeText(10,10,"Enter Player 1's name: ");
 	player[0].name = (Gwin.readString(12));
@@ -36,7 +45,9 @@ void connect4::setup(GWindow &Gwin)
 	Gwin.setPenColour(BLACK);
 	Gwin.writeText(" and ");
 	player[1].writeName(Gwin);
+	//}players
 
+	//game{
 	//Draws the boxes for each 'coin' to sit inside.
 	Gwin.setPenColour(BLACK);
 
@@ -77,6 +88,7 @@ void connect4::setup(GWindow &Gwin)
 		numPlace-=size;
 	}
 	Gwin.refresh();
+	//}game
 }
 
 int connect4::makeSelection(GWindow &Gwin)
