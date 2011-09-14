@@ -96,6 +96,7 @@ void connect4::setup(GWindow &Gwin)
 	Gwin.writeText(10,55,"Enter Player 2's name: ");
 	player[1].name = (Gwin.readString(12));
 	player[1].fixName();
+	while(player[0].name == player[1].name)
 	{
 		Gwin.writeText(" Name taken, try again: ");
 		player[1].name = Gwin.readString(12);
