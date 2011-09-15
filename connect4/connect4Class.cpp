@@ -2,25 +2,11 @@
 
 void connect4::setup(GWindow &Gwin)
 {
-	//reset(Gwin);
 
 	player[0].myColour = GwinColourNames::RED;
 	player[0].myGo = true;
 	player[1].myColour = GwinColourNames::BLUE; 
 	player[1].myGo = false;
-
-	//reset{
-	draw = true;
-	moves = 0;
-
-	for(int x=0;x<5;x++)
-	{
-		for(int y=0;y<5;y++)
-		{
-			board[x].row[y].empty=true;
-		}
-	}
-	//}reset
 
 	Gwin.setPenColour(player[0].myColour);
 	Gwin.writeText(10,10,"Enter Player 1's name: ");
@@ -43,8 +29,6 @@ void connect4::setup(GWindow &Gwin)
 	player[1].writeName(Gwin);
 
 	//game{
-	//Draws the boxes for each 'coin' to sit inside.
-	Gwin.setPenColour(BLACK);
 
 	int xleft=(Gwin.getWidth()-(gridSize*size)-20);
 	int ytop=(Gwin.getHeight()-(size)-20);
@@ -53,7 +37,7 @@ void connect4::setup(GWindow &Gwin)
 
 	board[0].xLeft = xleft;
 	int gridtop = Gwin.getHeight()-(20+(size*gridSize));
-	for(int x=0;x<5;x++)
+	for(int x=0;x<5;x++)//data to check for clicks
 	{
 		board[x+1].xLeft=board[x].xLeft+size;
 		board[x].xRight = board[x+1].xLeft;
@@ -61,11 +45,10 @@ void connect4::setup(GWindow &Gwin)
 		board[x].yTop = gridtop;
 	}
 
-	for(int x=0;x<gridSize;x++)
+	for(int x=0;x<gridSize;x++)//data to draw coins
 	{
 		for(int i=0;i<gridSize;i++)
 		{
-			Gwin.outlineRectangle(xleft,ytop,xright,ybottom);
 			board[i].row[x].x = xleft+halfSize;
 			board[i].row[x].y = ybottom-halfSize;
 			xleft+=size;
@@ -76,15 +59,10 @@ void connect4::setup(GWindow &Gwin)
 		xleft=(Gwin.getWidth()-(gridSize*size)-20);
 		xright=xleft+size;
 	}
-	int numPlace=580;
-	for(int i=5;i>0;i--)
-	{
-		Gwin.writeInt(numPlace,460,i);
-		numPlace-=size;
-	}
-	Gwin.refresh();
-	//}reset
+    //}reset
     //need to pull the board drawing and the data apart
+    
+    reset(Gwin);
 }
 
 int connect4::makeSelection(GWindow &Gwin)
@@ -268,4 +246,49 @@ person connect4::whosGo()
 		return player[0];
 	else if (player[1].myGo)
 		return player[1];
+}
+
+void connect4::reset(GWindow &Gwin)
+{
+    draw = true;
+	moves = 0;
+    
+	for(int x=0;x<5;x++)
+	{
+		for(int y=0;y<5;y++)
+		{
+			board[x].row[y].empty=true;
+		}
+	}
+    
+
+    Gwin.setPenColour(BLACK);
+    
+	int xleft=(Gwin.getWidth()-(gridSize*size)-20);
+	int ytop=(Gwin.getHeight()-(size)-20);
+	int xright=xleft+size;
+	int ybottom=ytop+size;
+    
+	for(int x=0;x<gridSize;x++)
+	{
+		for(int i=0;i<gridSize;i++)
+		{
+			Gwin.outlineRectangle(xleft,ytop,xright,ybottom);
+			xleft+=size;
+			xright+=size;
+		}
+		ytop-=size;
+		ybottom-=size;
+		xleft=(Gwin.getWidth()-(gridSize*size)-20);
+		xright=xleft+size;
+	}
+	int numPlace=580;
+	for(int i=5;i>0;i--)
+	{
+		Gwin.writeInt(numPlace,460,i);
+		numPlace-=size;
+	}
+    
+	Gwin.refresh();
+    
 }
