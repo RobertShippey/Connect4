@@ -33,8 +33,7 @@ public:
 	int moves;
     bool draw;
     void setup(GWindow &Gwin);
-	void setupPlayers(GWindow &Gwin);
-	void setupGame(GWindow &Gwin);
+	void reset(GWindow &Gwin);
     int makeSelection(GWindow &Gwin);
     bool won(GWindow &Gwin);
 	person whosGo();
