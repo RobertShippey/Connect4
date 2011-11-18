@@ -29,12 +29,12 @@ int main ()
 		game.whosGo().writeName(Gwin);
         Gwin.writeText(", click a column! ");
 		Gwin.refresh();
-		int tehAnswer = game.makeSelection(Gwin);
+		game.makeSelection(Gwin);
 		Gwin.writeInt(tehAnswer);
 		yText+=10;
         
         
-		if(game.won(Gwin) || tehAnswer==42)
+		if(game.won(Gwin))
 		{
             break;
         }
