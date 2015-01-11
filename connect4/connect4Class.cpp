@@ -2,9 +2,9 @@
 
 void connect4::setup(GWindow &Gwin)
 {
-	player[0].myColour = GwinColourNames::RED;
+	player[0].myColour = GwinColourNames::BLACK;
 	player[0].myGo = true;
-	player[1].myColour = GwinColourNames::BLUE; 
+	player[1].myColour = GwinColourNames::BLACK; 
 	player[1].myGo = false;
 	draw = true;
 	moves = 0;
@@ -22,10 +22,177 @@ void connect4::setup(GWindow &Gwin)
 	player[0].name = (Gwin.readString(12));
 	player[0].fixName();
 
+
+	Gwin.writeText(10,20,"Select ");
+	Gwin.writeString(player[0].name);
+	Gwin.writeText("'s coin colour");
+
+	Gwin.setPenColour(RED);
+	Gwin.rectangle(10,35,20,45);
+
+	Gwin.setPenColour(ORANGE);
+	Gwin.rectangle(30,35,40,45);
+
+	//Gwin.setPenColour(YELLOW);
+	//Gwin.rectangle(50,35,60,45);
+
+	Gwin.setPenColour(GREEN);
+	Gwin.rectangle(50,35,60,45);
+
+	Gwin.setPenColour(BLUE);
+	Gwin.rectangle(70,35,80,45);
+
+	Gwin.setPenColour(PURPLE);
+	Gwin.rectangle(90,35,100,45);
+
+	Gwin.refresh();
+
+	GMouseEvent c;
+	int x; int y;
+	Gwin.setPenColour(BLACK);
+	while(player[0].myColour==BLACK)
+	{
+		c = Mouse.waitEvent();
+		Gwin.refresh();
+		x = c.x;
+		y = c.y;
+		if(c.isLeftDown())
+		{
+			if(x>10 && x<20 && y>35 && y<45)
+			{
+				player[0].myColour = RED;
+				Gwin.outlineCircle(x,y,8);
+			}
+			else if(x>30 && x<40 && y>35 && y<45)
+			{
+				player[0].myColour = ORANGE;
+				Gwin.outlineCircle(x,y,8);
+			}
+			//else if(x>50 && x<60 && y>35 && y<45)
+			//{
+			//	player[0].myColour = YELLOW;
+			//	Gwin.outlineCircle(x,y,8);
+			//}
+			else if(x>50 && x<60 && y>35 && y<45)
+			{
+				player[0].myColour = GREEN;
+				Gwin.outlineCircle(x,y,8);
+			}
+			else if(x>70 && x<80 && y>35 && y<45)
+			{
+				player[0].myColour = BLUE;
+				Gwin.outlineCircle(x,y,8);
+			}
+			else if(x>90 && x<100 && y>35 && y<45)
+			{
+				player[0].myColour = PURPLE;
+				Gwin.outlineCircle(x,y,8);
+			}
+		}
+	}
+
+
 	Gwin.setPenColour(player[1].myColour);
-	Gwin.writeText(10,20,"Enter Player 2's name: ");
+	Gwin.writeText(10,55,"Enter Player 2's name: ");
 	player[1].name = (Gwin.readString(12));
 	player[1].fixName();
+	
+	Gwin.writeText(10,65,"Select ");
+	Gwin.writeString(player[1].name);
+	Gwin.writeText("'s coin colour");
+
+	if(player[0].myColour!=RED)
+	{
+		Gwin.setPenColour(RED);
+		Gwin.rectangle(10,80,20,90);
+	}
+	if(player[0].myColour!=ORANGE)
+	{
+		Gwin.setPenColour(ORANGE);
+		Gwin.rectangle(30,80,40,90);
+	}
+	//if(player[0].myColour!=YELLOW)
+	//{
+	//	Gwin.setPenColour(YELLOW);
+	//	Gwin.rectangle(50,80,60,90);
+	//}
+	if(player[0].myColour!=GREEN)
+	{
+		Gwin.setPenColour(GREEN);
+		Gwin.rectangle(50,80,60,90);
+	}
+	if(player[0].myColour!=BLUE)
+	{
+		Gwin.setPenColour(BLUE);
+		Gwin.rectangle(70,80,80,90);
+	}
+	if(player[0].myColour!=PURPLE)
+	{
+		Gwin.setPenColour(PURPLE);
+		Gwin.rectangle(90,80,100,90);
+	}
+
+	Gwin.refresh();
+
+	Gwin.setPenColour(BLACK);
+	while(player[1].myColour==BLACK)
+	{
+		c = Mouse.waitEvent();
+		Gwin.refresh();
+		x = c.x;
+		y = c.y;
+		if(c.isLeftDown())
+		{
+			if(x>10 && x<20 && y>80 && y<90)
+			{
+				if(player[0].myColour!=RED)
+				{
+					player[1].myColour = RED;
+					Gwin.outlineCircle(x,y,8);
+				}
+			}
+			else if(x>30 && x<40 && y>80 && y<90)
+			{
+				if(player[0].myColour!=ORANGE)
+				{
+					player[1].myColour = ORANGE;
+					Gwin.outlineCircle(x,y,8);
+				}
+			}
+			//else if(x>50 && x<60 && y>80 && y<90)
+			//{
+			//	if(player[0].myColour!=YELLOW)
+			//	{
+			//		player[1].myColour = YELLOW;
+			//		Gwin.outlineCircle(x,y,8);
+			//	}
+			//}
+			else if(x>50 && x<60 && y>80 && y<90)
+			{
+				if(player[0].myColour!=GREEN)
+				{
+					player[1].myColour = GREEN;
+					Gwin.outlineCircle(x,y,8);
+				}
+			}
+			else if(x>70 && x<80 && y>80 && y<90)
+			{
+				if(player[0].myColour!=BLUE)
+				{
+					player[1].myColour = BLUE;
+					Gwin.outlineCircle(x,y,8);
+				}
+			}
+			else if(x>90 && x<100 && y>80 && y<90)
+			{
+				if(player[0].myColour!=PURPLE)
+				{
+					player[1].myColour = PURPLE;
+					Gwin.outlineCircle(x,y,8);
+				}
+			}
+		}
+	}
 
 	Gwin.clear();
 
@@ -121,12 +288,13 @@ int connect4::makeSelection(GWindow &Gwin)
 		}
 	}
 
+
 	moves++;
 
 	person mover;
 	mover = whosGo();
 	Gwin.setPenColour(mover.myColour);
-	
+
 	player[0].myGo=!player[0].myGo;
 	player[1].myGo=!player[1].myGo;
 
